@@ -52,14 +52,14 @@ where $R_z(\psi)$, $R_y(\theta)$, and $R_x(\phi)$ are rotation matrices for each
 The length of each limb $l_i$ is calculated as:
 
 $$
-l_i = || {}^B\mathbf{d} + {}^BR_{P} \cdot {}^P\mathbf{p}_{i} - {}^B\mathbf{b}_{i} ||
+l_i = {}^B\mathbf{d} + {}^BR_{P} \cdot {}^P\mathbf{p}_{i} - {}^B\mathbf{b}_{i}
 $$
 
 where:
-- $ {}^B\mathbf{d} $ is the position vector,
-- $ {}^BR_{P} $ is the rotation matrix,
-- $ {}^P\mathbf{p}_{i} $ is the position of the passive joint on the platform,
-- $ {}^B\mathbf{b}_{i} $ is the position of the passive joint on the base.
+* $ {}^B\mathbf{d} $ is the position vector,
+* $ {}^BR_{P} $ is the rotation matrix,
+* $ {}^P\mathbf{p}_{i} $ is the position of the passive joint on the platform,
+* $ {}^B\mathbf{b}_{i} $ is the position of the passive joint on the base.
 
 ### Jacobian Matrix
 The Jacobian matrix $J$ relates the limb velocities to the twist of the robot's end-effector:
@@ -69,8 +69,8 @@ $$
 $$
 
 Where:
-- $ \dot{\mathbf{L}} = \begin{bmatrix} \dot{l}_1 & \dot{l}_2 & \cdots & \dot{l}_6 \end{bmatrix}^T $ is the vector of limb velocities,
-- $ \dot{\mathbf{X}} = \begin{bmatrix} \dot{x} & \dot{y} & \dot{z} & \dot{\phi} & \dot{\theta} & \dot{\psi} \end{bmatrix}^T $ is the twist of the end-effector.
+* $ \dot{\mathbf{L}} = \begin{bmatrix} \dot{l}_1 & \dot{l}_2 & \cdots & \dot{l}_6 \end{bmatrix}^T $ is the vector of limb velocities,
+* $ \dot{\mathbf{X}} = \begin{bmatrix} \dot{x} & \dot{y} & \dot{z} & \dot{\phi} & \dot{\theta} & \dot{\psi} \end{bmatrix}^T $ is the twist of the end-effector.
 
 The Jacobian matrix is a 6x6 matrix derived from the velocity loop closure equations for each limb, capturing the relationships between the robot's limb movements and its platform motion.
 
