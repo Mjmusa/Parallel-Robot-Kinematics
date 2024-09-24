@@ -52,7 +52,7 @@ where $R_z(\psi)$, $R_y(\theta)$, and $R_x(\phi)$ are rotation matrices for each
 The length of each limb $l_i$ is calculated as:
 
 $$
-l_i = {}^B\mathbf{d} + {}^BR_{P} \cdot {}^P\mathbf{p}_{i} - {}^B\mathbf{b}_{i}
+l_{i} = {}^B\mathbf{d} + {}^BR_{P}  {}^P\mathbf{p}_{i} - {}^B\mathbf{b}_{i}
 $$
 
 where:
@@ -67,22 +67,27 @@ The Jacobian matrix $J$ relates the limb velocities to the twist of the robot's 
 $$\dot{\mathbf{L}} = J \dot{\mathbf{X}}$$
 
 Where:
+
 $$
-\dot{\mathbf{L}} = \begin{bmatrix} \dot{l}_1 & \dot{l}_2 & \cdots & \dot{l}_6 \end{bmatrix}^T
+\dot{\mathbf{L}} = \begin{bmatrix} \dot{l}_{1} & \dot{l}_{2} & \cdots & \dot{l}_{6} \end{bmatrix}^T
 $$ 
+
 is the vector of limb velocities,
-$$\dot{\mathbf{X}} = \begin{bmatrix} \dot{x} & \dot{y} & \dot{z} & \dot{\phi} & \dot{\theta} & \dot{\psi} \end{bmatrix}^T
+
+$$
+\dot{\mathbf{X}} = \begin{bmatrix} \dot{x} & \dot{y} & \dot{z} & \dot{\phi} & \dot{\theta} & \dot{\psi} \end{bmatrix}^T
 $$ 
+
 is the twist of the end-effector.
 
 The Jacobian matrix is a 6x6 matrix derived from the velocity loop closure equations for each limb, capturing the relationships between the robot's limb movements and its platform motion.
 
 $$
 J = \begin{bmatrix} 
-        \hat{\mathbf{s}}^T_1 & (\mathbf{p}_1 \times \hat{\mathbf{s}}_1^T) \\
-        \hat{\mathbf{s}}^T_2 & (\mathbf{p}_2 \times \hat{\mathbf{s}}_2^T) \\
+        \hat{\mathbf{s}}^T_1 & (\mathbf{p}_1 \times \hat{\mathbf{s}}_1)^T \\
+        \hat{\mathbf{s}}^T_2 & (\mathbf{p}_2 \times \hat{\mathbf{s}}_2)^T \\
         \vdots & \vdots \\
-        \hat{\mathbf{s}}^T_6 & (\mathbf{p}_6 \times \hat{\mathbf{x}}_6^T) \\
+        \hat{\mathbf{s}}^T_6 & (\mathbf{p}_6 \times \hat{\mathbf{x}}_6)^T \\
     \end{bmatrix}
 $$
 
@@ -91,7 +96,7 @@ Forward kinematics determine the platform's pose (position and orientation) give
 
 The **Newton-Raphson** iterative method is employed to solve the forward kinematics, where an initial guess for the platform pose is iteratively updated until the limb length errors converge.
 
-Given the desired limb lengths $l_i$, the objective is to calculate the estimated lengths $l_i^*$ through an iterative process given an initial pose estimate $\mathbf{X}_{j-1}$. The estimated limb lengths $l_i^*$ are solved for using the inverse kinematics, and the value of $\mathbf{X}_{j-1}$ is incremented by a small step-size until the value of $\mathbf{X}_j$, which minimizes the scalar function:
+Given the desired limb lengths $l_i$, the objective is to calculate the estimated lengths $l_i^{*}$ through an iterative process given an initial pose estimate $\mathbf{X}_{j-1}$. The estimated limb lengths $l_i^{*}$ are solved for using the inverse kinematics, and the value of $\mathbf{X}_{j-1}$ is incremented by a small step-size until the value of $\mathbf{X}_j$, which minimizes the scalar function:
 
 $$
 f_i(\mathbf{X}) = l_i - l_i^*
