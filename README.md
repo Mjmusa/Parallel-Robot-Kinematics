@@ -28,11 +28,11 @@ $$
 $$
 
 $$
-\Gamma_i = \frac{(i-1)\pi}{3} - \alpha_B; \gamma_i = \frac{(i-1)\pi}{3} - \alpha_P, \text{for} i = 1,3,5
+\Gamma_i = \frac{(i-1)\pi}{3} - \alpha_B; \hspace{1mm} \gamma_i = \frac{(i-1)\pi}{3} - \alpha_P, \hspace{1mm}\text{for} \hspace{2mm} i = 1,3,5
 $$
 
 $$
-\Gamma_i = \Gamma_{i-1} + 2\alpha_B; \gamma_i = \gamma_{i-1} + 2\alpha_P, \text{for} i = 2,4,6
+\Gamma_i = \Gamma_{i-1} + 2\alpha_B; \hspace{1mm} \gamma_i = \gamma_{i-1} + 2\alpha_P, \hspace{1mm}\text{for} \hspace{2mm} i = 2,4,6
 $$
 
 The position vector of the moving platform in the base frame is:
@@ -52,14 +52,14 @@ where $R_z(\psi)$, $R_y(\theta)$, and $R_x(\phi)$ are rotation matrices for each
 The length of each limb $l_i$ is calculated as:
 
 $$
-l_i = \| {}^B\mathbf{d} + {}^BR_{P} \cdot {}^P\mathbf{p}_{i} - {}^B\mathbf{b}_{i} \|
+l_i = || {}^B\mathbf{d} + {}^BR_{P} \cdot {}^P\mathbf{p}_{i} - {}^B\mathbf{b}_{i} ||
 $$
 
 where:
-- $ \mathbf{B}_{d} $ is the position vector,
-- $ \mathbf{B R}_{P} $ is the rotation matrix,
-- $ \mathbf{P}_{pi} $ is the position of the passive joint on the platform,
-- $ \mathbf{B}_{bi} $ is the position of the passive joint on the base.
+- $ {}^B\mathbf{d} $ is the position vector,
+- $ {}^BR_{P} $ is the rotation matrix,
+- $ {}^P\mathbf{p}_{i} $ is the position of the passive joint on the platform,
+- $ {}^B\mathbf{b}_{i} $ is the position of the passive joint on the base.
 
 ### Jacobian Matrix
 The Jacobian matrix $J$ relates the limb velocities to the twist of the robot's end-effector:
