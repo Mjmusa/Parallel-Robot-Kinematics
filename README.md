@@ -17,7 +17,7 @@ The robot's structure is composed of three main components:
 Each limb is connected to the base via a **universal joint (U)** and to the moving platform via a **spherical joint (S)**, resulting in a 6-UPS configuration. By altering the length of the limbs, the position and orientation of the moving platform are controlled.
 
 ### Inverse Kinematics
-Inverse kinematics for this robot involve calculating the required lengths of the six limbs to position the moving platform at a desired pose. The fixed base and moving platform are assigned coordinate frames $ B $ at point $O_B$ and $ P $ at point $O_P$ respectively, with vectors defined for the joint attachment points on both frames.
+Inverse kinematics for this robot involve calculating the required lengths of the six limbs to position the moving platform at a desired pose. The fixed base and moving platform are assigned coordinate frames $B$ at point $O_B$ and $P$ at point $O_P$ respectively, with vectors defined for the joint attachment points on both frames.
 
 $$
 {}^P\mathbf{p}_{i} = r_P \begin{bmatrix} \cos(\gamma_i) & \sin(\gamma_i) & 0 \end{bmatrix}^T
@@ -51,26 +51,22 @@ where $R_z(\psi)$, $R_y(\theta)$, and $R_x(\phi)$ are rotation matrices for each
 
 The length of each limb $l_i$ is calculated as:
 
-$$
-l_i = {}^B\mathbf{d} + {}^BR_{P} \cdot {}^P\mathbf{p}_{i} - {}^B\mathbf{b}_{i}
-$$
+$$l_i = {}^B\mathbf{d} + {}^BR_{P} \cdot {}^P\mathbf{p}_{i} - {}^B\mathbf{b}_{i}$$
 
 where:
-* $ {}^B\mathbf{d} $ is the position vector,
-* $ {}^BR_{P} $ is the rotation matrix,
-* $ {}^P\mathbf{p}_{i} $ is the position of the passive joint on the platform,
-* $ {}^B\mathbf{b}_{i} $ is the position of the passive joint on the base.
+* ${}^B\mathbf{d}$ is the position vector,
+* ${}^BR_{P}$ is the rotation matrix,
+* ${}^P\mathbf{p}_{i}$ is the position of the passive joint on the platform,
+* ${}^B\mathbf{b}_{i}$ is the position of the passive joint on the base.
 
 ### Jacobian Matrix
 The Jacobian matrix $J$ relates the limb velocities to the twist of the robot's end-effector:
 
-$$
-\dot{\mathbf{L}} = J \dot{\mathbf{X}}
-$$
+$$\dot{\mathbf{L}} = J \dot{\mathbf{X}}$$
 
 Where:
-* $ \dot{\mathbf{L}} = \begin{bmatrix} \dot{l}_1 & \dot{l}_2 & \cdots & \dot{l}_6 \end{bmatrix}^T $ is the vector of limb velocities,
-* $ \dot{\mathbf{X}} = \begin{bmatrix} \dot{x} & \dot{y} & \dot{z} & \dot{\phi} & \dot{\theta} & \dot{\psi} \end{bmatrix}^T $ is the twist of the end-effector.
+* $\dot{\mathbf{L}} = \begin{bmatrix} \dot{l}_1 & \dot{l}_2 & \cdots & \dot{l}_6 \end{bmatrix}^T$ is the vector of limb velocities,
+* $\dot{\mathbf{X}} = \begin{bmatrix} \dot{x} & \dot{y} & \dot{z} & \dot{\phi} & \dot{\theta} & \dot{\psi} \end{bmatrix}^T$ is the twist of the end-effector.
 
 The Jacobian matrix is a 6x6 matrix derived from the velocity loop closure equations for each limb, capturing the relationships between the robot's limb movements and its platform motion.
 
